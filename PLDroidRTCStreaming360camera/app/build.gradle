@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "com.qiniu.pili.droid.rtcstreaming.demo"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0.3"
+        multiDexEnabled true
+        buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22+'
+//    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.qiniu:happy-dns:0.2.8'
+    compile 'com.qiniu.pili:pili-android-qos:0.8.18'
+    compile files('libs/pldroid-player-1.4.1.jar')
+    compile files('libs/pldroid-rtc-streaming-1.0.3.jar')
+//    compile project(':library')
+    compile 'com.android.support:multidex:1.0.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+
+}
